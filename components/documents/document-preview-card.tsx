@@ -102,7 +102,7 @@ export function DocumentPreviewCard({
   const billToLines = buildBillToDetailLines(billTo);
 
   return (
-    <div className="min-w-0">
+    <div className="w-full min-w-0">
       {variant ? (
         <p className="mb-2 text-[11px] text-muted-foreground">
           {variant === "live" ? "Live preview" : "Preview"} — matches your PDF
@@ -110,7 +110,7 @@ export function DocumentPreviewCard({
         </p>
       ) : null}
 
-      <article className="overflow-hidden rounded-md border border-neutral-200 bg-white">
+      <article className="w-full overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm">
         <div className="h-[3px]" style={{ backgroundColor: theme.accent }} />
 
         <div className="p-6 sm:p-8">
@@ -406,7 +406,7 @@ export function DocumentPreviewCard({
           <div className="mt-6 border-t border-dashed border-neutral-200 pt-4 text-center">
             <p className="text-[10px] leading-relaxed text-neutral-400">
               Powered by{" "}
-              <span className="font-semibold text-neutral-500">{APP_NAME}</span>
+              <span className="font-semibold text-[#1a3d34]">{APP_NAME}</span>
               <span className="text-neutral-300"> · </span>
               {APP_TAGLINE}
             </p>

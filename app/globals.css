@@ -34,35 +34,35 @@
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* CRM palette — Salesforce / HubSpot style blues + soft slate */
+/* FlexHub — Ravo forest green + soft cream */
 :root {
   --radius: 0.75rem;
-  --background: #f1f5f9;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #2563eb;
-  --primary-foreground: #ffffff;
-  --secondary: #eff6ff;
-  --secondary-foreground: #1d4ed8;
-  --muted: #f8fafc;
-  --muted-foreground: #64748b;
-  --accent: #eff6ff;
-  --accent-foreground: #1d4ed8;
+  --background: #f2ebe0;
+  --foreground: #1a3d34;
+  --card: #fcfaf6;
+  --card-foreground: #1a3d34;
+  --popover: #fcfaf6;
+  --popover-foreground: #1a3d34;
+  --primary: #1a3d34;
+  --primary-foreground: #f2ebe0;
+  --secondary: #f8f4ec;
+  --secondary-foreground: #1a3d34;
+  --muted: #f8f4ec;
+  --muted-foreground: #5c6e66;
+  --accent: #e8e0d4;
+  --accent-foreground: #1a3d34;
   --destructive: #dc2626;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #2563eb;
-  --sidebar: #0f172a;
-  --sidebar-foreground: #f8fafc;
-  --sidebar-muted: #94a3b8;
-  --sidebar-active: #2563eb;
-  --success: #059669;
-  --warning: #d97706;
-  --shadow-card: 0 1px 3px 0 rgb(15 23 42 / 0.06), 0 1px 2px -1px rgb(15 23 42 / 0.06);
-  --shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.07), 0 2px 4px -2px rgb(15 23 42 / 0.05);
+  --border: #d9cfc0;
+  --input: #d9cfc0;
+  --ring: #1a3d34;
+  --sidebar: #1a3d34;
+  --sidebar-foreground: #f2ebe0;
+  --sidebar-muted: #a8bdb4;
+  --sidebar-active: #2a5c4d;
+  --success: #2a5c4d;
+  --warning: #b45309;
+  --shadow-card: 0 1px 3px 0 rgb(26 61 52 / 0.06), 0 1px 2px -1px rgb(26 61 52 / 0.06);
+  --shadow-md: 0 4px 6px -1px rgb(26 61 52 / 0.08), 0 2px 4px -2px rgb(26 61 52 / 0.05);
 }
 
 @layer base {
@@ -80,5 +80,301 @@
   }
   .shadow-soft {
     box-shadow: var(--shadow-md);
+  }
+}
+
+.fh-dialog {
+  width: calc(100% - 2rem);
+  max-width: 32rem;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--card);
+  color: var(--card-foreground);
+  box-shadow: var(--shadow-md);
+}
+
+.fh-dialog::backdrop {
+  background: rgb(26 61 52 / 0.45);
+}
+
+/* Auth brand panel */
+.auth-panel-dots-light {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(26 61 52 / 0.08) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
+
+.auth-panel-dots-dark {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(242 235 224 / 0.1) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
+
+@keyframes auth-panel-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes auth-panel-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.auth-panel-float {
+  animation: auth-panel-float 5.5s ease-in-out infinite;
+}
+
+.auth-panel-float-slow {
+  animation: auth-panel-float 6.5s ease-in-out infinite;
+}
+
+.auth-panel-float-delay {
+  animation: auth-panel-float 5.5s ease-in-out 1s infinite;
+}
+
+.auth-panel-glow {
+  animation: auth-panel-glow-pulse 4s ease-in-out infinite;
+}
+
+.auth-panel-promo-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgb(242 235 224 / 0.85) 0%,
+    rgb(255 255 255 / 1) 50%,
+    rgb(242 235 224 / 0.85) 100%
+  );
+  background-size: 200% auto;
+  animation: fh-shimmer 3s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-panel-float,
+  .auth-panel-float-slow,
+  .auth-panel-float-delay,
+  .auth-panel-glow,
+  .auth-panel-promo-shimmer {
+    animation: none !important;
+  }
+}
+
+/* FlexHub landing — brand tokens + motion */
+@keyframes fh-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fh-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fh-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fh-shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes fh-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.06);
+  }
+}
+
+/* FlexHub landing — Ravo forest green + soft cream */
+.flexhub-page {
+  --fh-brand: #1a3d34;
+  --fh-brand-dark: #122b24;
+  --fh-brand-light: #2a5c4d;
+  --fh-brand-soft: #f8f4ec;
+  --fh-brand-text: #1a3d34;
+  --fh-accent: #f2ebe0;
+  --fh-accent-dark: #e5dccf;
+  --fh-cream: #f2ebe0;
+  --fh-cream-light: #f8f4ec;
+  --fh-card: #fcfaf6;
+  --fh-ink: #1a3d34;
+  --fh-muted: #5c6e66;
+  --fh-surface: #f2ebe0;
+  --fh-dark: #1a3d34;
+  --fh-dark-card: #224a3f;
+  --fh-brand-rgb: 26 61 52;
+  --fh-accent-rgb: 242 235 224;
+  --fh-primary-bg: #1a3d34;
+  --fh-primary-text: #f2ebe0;
+  --fh-primary-hover: #122b24;
+  --fh-primary-rgb: 26 61 52;
+}
+
+.flexhub-page .flexhub-grid-bg {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(var(--fh-brand-rgb) / 0.06) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+}
+
+.flexhub-float {
+  animation: fh-float 6s ease-in-out infinite;
+}
+
+.flexhub-enter {
+  animation: fh-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.flexhub-enter-1 { animation-delay: 0.1s; }
+.flexhub-enter-2 { animation-delay: 0.2s; }
+.flexhub-enter-3 { animation-delay: 0.3s; }
+.flexhub-enter-4 { animation-delay: 0.4s; }
+
+.flexhub-enter-from-left {
+  animation-name: fh-fade-left;
+}
+
+.flexhub-enter-from-right {
+  animation-name: fh-fade-right;
+}
+
+.flexhub-enter-fade {
+  animation-name: fh-fade-in;
+}
+
+@keyframes fh-fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fh-fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fh-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.flexhub-marquee {
+  animation: fh-marquee 28s linear infinite;
+}
+
+.flexhub-promo-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--fh-accent-rgb) / 0.45) 0%,
+    rgb(var(--fh-accent-rgb) / 0.85) 50%,
+    rgb(var(--fh-accent-rgb) / 0.45) 100%
+  );
+  background-size: 200% auto;
+  animation: fh-shimmer 3.5s linear infinite;
+}
+
+.flexhub-glow {
+  animation: fh-glow 7s ease-in-out infinite;
+}
+
+.flexhub-nav-link {
+  position: relative;
+}
+
+.flexhub-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  border-radius: 999px;
+  background: var(--fh-primary-bg);
+  transition: width 0.3s ease;
+}
+
+.flexhub-nav-link:hover::after {
+  width: 100%;
+}
+
+.flexhub-grid-bg {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(var(--fh-brand-rgb) / 0.09) 1px,
+    transparent 0
+  );
+  background-size: 32px 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flexhub-float,
+  .flexhub-enter,
+  .flexhub-enter-1,
+  .flexhub-enter-2,
+  .flexhub-enter-3,
+  .flexhub-enter-4,
+  .flexhub-marquee,
+  .flexhub-promo-shimmer,
+  .flexhub-glow {
+    animation: none !important;
   }
 }

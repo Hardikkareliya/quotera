@@ -1,20 +1,23 @@
 import Link from "next/link";
 
+import { AuthFormHeader } from "@/components/auth/auth-form-header";
 import { LoginForm } from "@/components/auth/login-form";
+import { APP_NAME } from "@/lib/app-brand";
 
 export default function LoginPage() {
   return (
     <div className="space-y-6">
-      <div className="text-center">
-        <h2 className="text-2xl font-bold text-foreground">Sign in</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Welcome back to FlexHub
-        </p>
-      </div>
+      <AuthFormHeader
+        title="Sign in"
+        subtitle={`Welcome back to ${APP_NAME}. Continue managing your business.`}
+      />
       <LoginForm />
-      <p className="text-center text-sm text-muted-foreground">
+      <p className="border-t border-border/70 pt-6 text-center text-sm text-muted-foreground">
         Don&apos;t have an account?{" "}
-        <Link href="/register" className="font-semibold text-primary hover:underline">
+        <Link
+          href="/register"
+          className="font-semibold text-primary underline-offset-4 hover:underline"
+        >
           Create account
         </Link>
       </p>

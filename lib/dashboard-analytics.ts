@@ -73,7 +73,7 @@ export async function getDashboardAnalytics(
     { count: quoteCount },
     { count: clientCount },
   ] = await Promise.all([
-    paymentsQuery,
+    paymentsQuery.limit(500),
     invoicesQuery,
     supabase
       .from("invoices")
@@ -143,7 +143,7 @@ export async function getDashboardAnalytics(
 
   const pipeline = [
     { name: "Draft", value: statusCounts.draft, fill: "#94a3b8" },
-    { name: "Sent", value: statusCounts.sent, fill: "#2563eb" },
+    { name: "Sent", value: statusCounts.sent, fill: "#1a3d34" },
     { name: "Partial", value: statusCounts.partially_paid, fill: "#d97706" },
     { name: "Paid", value: statusCounts.paid, fill: "#059669" },
     { name: "Overdue", value: statusCounts.overdue, fill: "#dc2626" },

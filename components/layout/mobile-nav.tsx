@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
+import { FlexHubLogo } from "@/components/brand/flexhub-logo";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -23,9 +24,9 @@ export function MobileNav({ orgName }: { orgName?: string }) {
     <header className="relative border-b border-border bg-card px-4 py-3 lg:hidden">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-semibold text-foreground">FlexHub</p>
+          <FlexHubLogo href="/dashboard" size="sm" variant="on-light" />
           {orgName ? (
-            <p className="text-xs text-muted-foreground">{orgName}</p>
+            <p className="mt-0.5 text-xs text-muted-foreground">{orgName}</p>
           ) : null}
         </div>
         <button

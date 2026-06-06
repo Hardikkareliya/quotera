@@ -34,10 +34,16 @@ export function LoginForm() {
   }
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+    <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">
       <div className="grid gap-2">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" {...form.register("email")} />
+        <Input
+          id="email"
+          type="email"
+          placeholder="you@company.com"
+          className="h-11 rounded-xl border-[#1a3d34]/15 bg-[#fcfaf6] px-4"
+          {...form.register("email")}
+        />
         {form.formState.errors.email && (
           <p className="text-sm text-destructive">
             {form.formState.errors.email.message}
@@ -54,14 +60,24 @@ export function LoginForm() {
             Forgot password?
           </Link>
         </div>
-        <Input id="password" type="password" {...form.register("password")} />
+        <Input
+          id="password"
+          type="password"
+          placeholder="••••••••"
+          className="h-11 rounded-xl border-[#1a3d34]/15 bg-[#fcfaf6] px-4"
+          {...form.register("password")}
+        />
         {form.formState.errors.password && (
           <p className="text-sm text-destructive">
             {form.formState.errors.password.message}
           </p>
         )}
       </div>
-      <Button type="submit" className="h-11 w-full rounded-xl" disabled={pending}>
+      <Button
+        type="submit"
+        className="mt-1 h-12 w-full rounded-xl text-[15px] font-semibold shadow-[0_12px_28px_rgb(26_61_52/0.18)]"
+        disabled={pending}
+      >
         {pending ? "Signing in…" : "Sign in"}
       </Button>
     </form>

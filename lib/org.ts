@@ -1,7 +1,8 @@
 import { cache } from "react";
 
-import { getAuthUser } from "@/lib/auth-session";
+import { getAuthUser, getValidatedAuthUser } from "@/lib/auth-session";
 import { createClient } from "@/lib/supabase/server";
+import type { Organization } from "@/types/database";
 
 export const getCurrentOrg = cache(async () => {
   const user = await getAuthUser();
@@ -11,19 +12,24 @@ export const getCurrentOrg = cache(async () => {
 
   const { data: membership } = await supabase
     .from("org_members")
-    .select("org_id, role")
+    .select("org_id, role, organizations(*)")
     .eq("user_id", user.id)
     .maybeSingle();
 
   if (!membership) return { user, org: null, membership: null };
 
-  const { data: org } = await supabase
-    .from("organizations")
-    .select("*")
-    .eq("id", membership.org_id)
-    .single();
+  const nested = membership.organizations as Organization | Organization[] | null;
+  const org = Array.isArray(nested) ? nested[0] ?? null : nested;
 
-  return { user, org, membership };
+  if (!org) {
+    return { user, org: null, membership: { org_id: membership.org_id, role: membership.role } };
+  }
+
+  return {
+    user,
+    org,
+    membership: { org_id: membership.org_id, role: membership.role },
+  };
 });
 
 /** After bootstrap RPC — bypasses request cache so layout sees the new org. */
@@ -49,7 +55,7 @@ export async function loadOrgAfterBootstrap(userId: string) {
 
 export async function ensureOrgBootstrap(fullName?: string | null) {
   const supabase = await createClient();
-  const user = await getAuthUser();
+  const user = await getValidatedAuthUser();
   if (!user) return null;
 
   const { data: orgId, error } = await supabase.rpc("bootstrap_user_org", {

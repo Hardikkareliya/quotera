@@ -77,7 +77,7 @@ export function DashboardCharts({
                 />
                 <Bar
                   dataKey="revenue"
-                  fill="#2563eb"
+                  fill="#1a3d34"
                   radius={[6, 6, 0, 0]}
                   maxBarSize={48}
                 />

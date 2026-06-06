@@ -11,6 +11,7 @@ import {
   Users,
 } from "lucide-react";
 
+import { FlexHubLogo } from "@/components/brand/flexhub-logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -34,15 +35,12 @@ export function DashboardNav({
   return (
     <>
       <div className="mb-6 px-2">
-        <Link href="/dashboard" className="flex items-center gap-2.5">
-          <span className="flex size-9 items-center justify-center rounded-lg bg-sidebar-active text-sm font-bold text-white">
-            F
-          </span>
-          <div>
-            <p className="text-sm font-semibold text-sidebar-foreground">FlexHub</p>
-            <p className="text-[11px] text-sidebar-muted">Business CRM</p>
-          </div>
-        </Link>
+        <FlexHubLogo
+          href="/dashboard"
+          size="md"
+          variant="sidebar"
+          showTagline
+        />
       </div>
 
       <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-widest text-sidebar-muted">
@@ -59,6 +57,7 @@ export function DashboardNav({
             <Link
               key={href}
               href={href}
+              prefetch={true}
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                 active

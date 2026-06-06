@@ -76,7 +76,7 @@ export const organizationSchema = z.object({
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         path: ["documentAccentCustom"],
-        message: "Enter a valid colour (e.g. #1d4ed8)",
+        message: "Enter a valid colour (e.g. #1a3d34)",
       });
     }
   }

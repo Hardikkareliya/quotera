@@ -114,33 +114,6 @@ export function OrganizationForm({ org }: { org: Organization }) {
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
         <FormSection
-          title="Document colour"
-          description="Accent used on quotation and invoice heading, total, and top bar"
-        >
-          <DocumentThemePicker
-            theme={form.watch("documentTheme")}
-            customAccent={form.watch("documentAccentCustom") ?? ""}
-            onThemeChange={(id) =>
-              form.setValue("documentTheme", id, { shouldDirty: true })
-            }
-            onCustomAccentChange={(hex) =>
-              form.setValue("documentAccentCustom", hex, { shouldDirty: true })
-            }
-          />
-          {form.formState.errors.documentAccentCustom ? (
-            <p className="mt-2 text-sm text-destructive">
-              {form.formState.errors.documentAccentCustom.message}
-            </p>
-          ) : null}
-          <div className="mt-4">
-            <p className="mb-2 text-xs font-medium text-muted-foreground">
-              Live colour preview
-            </p>
-            <DocumentAccentPreview theme={previewTheme} />
-          </div>
-        </FormSection>
-
-        <FormSection
           title="Company"
           description="Name and address — company name always appears"
         >
@@ -366,6 +339,33 @@ export function OrganizationForm({ org }: { org: Organization }) {
                 ) : null}
               </div>
             ))}
+          </div>
+        </FormSection>
+
+        <FormSection
+          title="Document colour"
+          description="Accent used on quotation and invoice heading, total, and top bar"
+        >
+          <DocumentThemePicker
+            theme={form.watch("documentTheme")}
+            customAccent={form.watch("documentAccentCustom") ?? ""}
+            onThemeChange={(id) =>
+              form.setValue("documentTheme", id, { shouldDirty: true })
+            }
+            onCustomAccentChange={(hex) =>
+              form.setValue("documentAccentCustom", hex, { shouldDirty: true })
+            }
+          />
+          {form.formState.errors.documentAccentCustom ? (
+            <p className="mt-2 text-sm text-destructive">
+              {form.formState.errors.documentAccentCustom.message}
+            </p>
+          ) : null}
+          <div className="mt-4">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">
+              Live colour preview
+            </p>
+            <DocumentAccentPreview theme={previewTheme} />
           </div>
         </FormSection>
 

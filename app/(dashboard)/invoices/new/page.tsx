@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
-
 import {
   createInvoiceAction,
   updateInvoiceAction,
@@ -25,8 +23,6 @@ export default async function NewInvoicePage() {
     .eq("org_id", org.id)
     .order("name");
 
-  if (!clients?.length) redirect("/clients/new");
-
   const accentTheme = getDocumentTheme(org.document_theme, org.document_accent_custom);
 
   return (
@@ -42,7 +38,7 @@ export default async function NewInvoicePage() {
     >
       <DocumentForm
         type="invoice"
-        clients={clients}
+        clients={clients ?? []}
         org={org}
         accentTheme={accentTheme}
         hasOrgGstin={Boolean(org.gstin?.trim())}

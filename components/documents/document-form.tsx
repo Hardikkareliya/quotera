@@ -2,9 +2,10 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   useForm,
+  useWatch,
   type Control,
   type UseFormRegister,
   type UseFormSetValue,
@@ -16,13 +17,16 @@ import {
   LineItemsEditor,
   type LineItemsFormValues,
 } from "@/components/documents/line-items-editor";
+import {
+  ClientSelectField,
+  type DocumentClientOption,
+} from "@/components/documents/client-select-field";
 import { DocumentLivePreview } from "@/components/documents/document-live-preview";
 import { TaxModeSelector } from "@/components/documents/tax-mode-selector";
 import { FormFooter } from "@/components/layout/form-footer";
 import { FormSection } from "@/components/layout/page-shell";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import type { DocumentFormActions } from "@/lib/document-form-actions";
 import {
@@ -33,7 +37,7 @@ import {
 } from "@/lib/tax-mode";
 import type { DocumentThemeTokens } from "@/lib/document-theme";
 import { documentItemsSchema } from "@/lib/validations/line-item";
-import type { Client, Organization } from "@/types/database";
+import type { Organization } from "@/types/database";
 
 const baseSchema = z.object({
   clientId: z.string().uuid(),
@@ -51,7 +55,7 @@ type FormValues = z.infer<typeof baseSchema>;
 
 type Props = {
   type: "quotation" | "invoice";
-  clients: Pick<Client, "id" | "name" | "state_code">[];
+  clients: DocumentClientOption[];
   org: Organization;
   accentTheme: DocumentThemeTokens;
   /** When true, new documents default to GST instead of None. */
@@ -82,8 +86,21 @@ export function DocumentForm({
 }: Props) {
   const router = useRouter();
   const [pending, setPending] = useState(false);
+  const [clientOptions, setClientOptions] = useState<DocumentClientOption[]>(clients);
   const basePath = type === "quotation" ? "/quotations" : "/invoices";
   const showPreview = layout === "full";
+
+  const sortedClients = useMemo(
+    () => [...clientOptions].sort((a, b) => a.name.localeCompare(b.name)),
+    [clientOptions],
+  );
+
+  function handleClientAdded(client: DocumentClientOption) {
+    setClientOptions((prev) => {
+      if (prev.some((c) => c.id === client.id)) return prev;
+      return [...prev, client];
+    });
+  }
 
   const form = useForm<FormValues>({
     resolver: zodResolver(baseSchema),
@@ -110,7 +127,10 @@ export function DocumentForm({
     },
   });
 
-  const taxMode = form.watch("taxMode");
+  const clientId = useWatch({ control: form.control, name: "clientId" }) ?? "";
+  const taxMode =
+    useWatch({ control: form.control, name: "taxMode" }) ??
+    defaultTaxModeForOrg(hasOrgGstin);
   const taxEnabled = isTaxEnabled(taxMode);
 
   function handleTaxModeChange(mode: TaxMode) {
@@ -187,16 +207,20 @@ export function DocumentForm({
     <div className="min-w-0 space-y-5">
       <FormSection title="Details" description={`Client and dates for this ${label}`}>
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="grid gap-2">
-            <Label>Client *</Label>
-            <Select {...form.register("clientId")}>
-              {clients.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </Select>
-          </div>
+          <ClientSelectField
+            className="sm:col-span-2"
+            value={clientId}
+            onChange={(nextClientId) =>
+              form.setValue("clientId", nextClientId, {
+                shouldDirty: true,
+                shouldValidate: true,
+              })
+            }
+            clients={sortedClients}
+            onClientAdded={handleClientAdded}
+            defaultStateCode={org.state_code}
+            error={form.formState.errors.clientId?.message}
+          />
           <div className="grid gap-2">
             <Label>Issue date *</Label>
             <Input type="date" {...form.register("issueDate")} />
@@ -262,13 +286,13 @@ export function DocumentForm({
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
       {showPreview ? (
-        <div className="grid w-full min-w-0 gap-6 lg:grid-cols-[minmax(0,1fr)_min(100%,22rem)] xl:grid-cols-[minmax(0,1fr)_24rem]">
+        <div className="grid w-full min-w-0 gap-6 lg:grid-cols-2 lg:items-start">
           {formBody}
-          <aside className="min-w-0 lg:sticky lg:top-6 lg:self-start">
+          <aside className="w-full min-w-0 lg:sticky lg:top-6 lg:self-start">
             <DocumentLivePreview
               type={type}
               control={form.control as unknown as Control<Record<string, unknown>>}
-              clients={clients}
+              clients={sortedClients}
               org={org}
               accentTheme={accentTheme}
               documentNumber={documentNumber}

@@ -43,6 +43,8 @@ export async function createClientAction(
   if (error) return fail(error.message);
 
   revalidatePath("/clients");
+  revalidatePath("/quotations/new");
+  revalidatePath("/invoices/new");
   revalidatePath("/dashboard");
   revalidateDashboard(org.id);
   return ok({ id: data.id });
