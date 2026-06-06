@@ -50,44 +50,15 @@ cp .env.example .env.local
 
 Edit `.env.local`:
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase project URL (Settings → API) |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes | Supabase anon/public key |
-| `NEXT_PUBLIC_SITE_URL` | Yes | App URL — `http://localhost:3000` locally |
-| `RESEND_API_KEY` | No | Email share via Resend |
-| `RESEND_FROM_EMAIL` | No | e.g. `FlexHub <onboarding@resend.dev>` |
-| `SUPABASE_SERVICE_ROLE_KEY` | No | Server-only; not needed for normal app use |
-| `DATABASE_URL` | No | Only if running `npm run db:migrate` CLI script |
 
-Never commit `.env.local` — it is listed in `.gitignore`.
-
-### 3. Database migrations
-
-Open the [Supabase SQL Editor](https://supabase.com/dashboard) for your project and run each file **in order** (copy/paste full file contents, then Run):
-
-| Order | File | Purpose |
-|-------|------|---------|
-| 1 | `supabase/migrations/20250604000001_initial_schema.sql` | Tables, RLS, numbering, storage bucket |
-| 2 | `supabase/migrations/20250604000002_bootstrap_user_org.sql` | Auto-create org on signup |
-| 3 | `supabase/migrations/20250604000003_organization_contact.sql` | Email, phone, website on org |
-| 4 | `supabase/migrations/20250604000004_line_item_flexibility.sql` | Fixed pricing, sub-descriptions |
-| 5 | `supabase/migrations/20250604000005_tax_mode.sql` | GST / IGST tax modes |
-| 6 | `supabase/migrations/20250604000006_tax_mode_none.sql` | “No tax” option |
-| 7 | `supabase/migrations/20250604000007_document_visibility.sql` | Per-field PDF/preview toggles |
-| 8 | `supabase/migrations/20250604000008_document_theme.sql` | Document accent presets |
-| 9 | `supabase/migrations/20250604000009_document_theme_custom.sql` | Custom hex accent colour |
-
-Skip `20250604000000_reset_dev.sql` unless you intentionally want to wipe dev data.
-
-### 4. Supabase Auth (local)
+### 3. Supabase Auth (local)
 
 In **Authentication → URL Configuration**:
 
 - **Site URL:** `http://localhost:3000`
 - **Redirect URLs:** add `http://localhost:3000/**`
 
-### 5. Run the app
+### 4. Run the app
 
 ```bash
 npm run dev
@@ -95,7 +66,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000), register a new account, and complete company setup under **Settings**.
 
-### 6. Production build (optional check)
+### 5. Production build (optional check)
 
 ```bash
 npm run build
@@ -147,6 +118,21 @@ In **Authentication → URL Configuration**:
 Run the same migration files (steps 1–9 above) on your **production** Supabase project if you have not already.
 
 Every `git push` to `main` triggers an automatic Vercel redeploy.
+
+### Vercel build error: “No Output Directory named public”
+
+The app build succeeded — this error means Vercel project settings are wrong (not your code).
+
+1. **Vercel Dashboard** → your project → **Settings** → **General**
+2. **Framework Preset:** must be **Next.js** (not “Other”)
+3. **Settings** → **Build and Deployment:**
+   - **Build Command:** `npm run build` (or leave default)
+   - **Output Directory:** leave **empty** — do **not** set `public`
+   - **Install Command:** `npm install` (or default)
+
+Next.js on Vercel uses its own output (`.next`); `public/` is only for static assets, not the build output folder.
+
+This repo includes `vercel.json` with `"framework": "nextjs"` so Vercel detects the project correctly after you push.
 
 ---
 
