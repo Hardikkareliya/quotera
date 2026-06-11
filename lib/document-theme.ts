@@ -1,3 +1,5 @@
+import { defaultCustomAccent, forestDocumentTheme } from "@/lib/colors";
+
 export const DOCUMENT_PRESET_IDS = [
   "forest",
   "blue",
@@ -18,7 +20,7 @@ export const DOCUMENT_STORED_THEME_IDS = [
 export type DocumentStoredThemeId = (typeof DOCUMENT_STORED_THEME_IDS)[number];
 
 export const DEFAULT_DOCUMENT_THEME: DocumentPresetId = "forest";
-export const DEFAULT_CUSTOM_ACCENT = "#1a3d34";
+export const DEFAULT_CUSTOM_ACCENT = defaultCustomAccent;
 
 export type DocumentThemeTokens = {
   id: DocumentStoredThemeId;
@@ -35,9 +37,9 @@ export const DOCUMENT_THEME_PRESETS: Record<
   forest: {
     id: "forest",
     label: "Forest",
-    accent: "#1a3d34",
-    accentSoft: "#f2ebe0",
-    tableHead: "#f8f4ec",
+    accent: forestDocumentTheme.accent,
+    accentSoft: forestDocumentTheme.accentSoft,
+    tableHead: forestDocumentTheme.tableHead,
   },
   blue: {
     id: "blue",

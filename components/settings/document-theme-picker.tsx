@@ -117,7 +117,7 @@ export function DocumentThemePicker({
             <Input
               value={customAccent}
               onChange={(e) => handleCustomHexInput(e.target.value)}
-              placeholder="#1a3d34"
+              placeholder={DEFAULT_CUSTOM_ACCENT}
               className="h-10 max-w-[120px] font-mono text-sm uppercase"
               spellCheck={false}
             />

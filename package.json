@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "gen:colors": "tsx scripts/generate-brand-tokens.ts",
+    "predev": "npm run gen:colors",
+    "prebuild": "npm run gen:colors",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
@@ -40,6 +43,7 @@
     "eslint-config-next": "^15.3.3",
     "pg": "^8.16.0",
     "tailwindcss": "^4",
+    "tsx": "^4.20.3",
     "typescript": "^5"
   }
 }

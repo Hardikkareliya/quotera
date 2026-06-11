@@ -10,6 +10,7 @@ import { loginAction } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ui } from "@/lib/colors";
 import { loginSchema, type LoginInput } from "@/lib/validations/auth";
 
 export function LoginForm() {
@@ -41,7 +42,7 @@ export function LoginForm() {
           id="email"
           type="email"
           placeholder="you@company.com"
-          className="h-11 rounded-xl border-[#1a3d34]/15 bg-[#fcfaf6] px-4"
+          className={ui.fieldInput}
           {...form.register("email")}
         />
         {form.formState.errors.email && (
@@ -64,7 +65,7 @@ export function LoginForm() {
           id="password"
           type="password"
           placeholder="••••••••"
-          className="h-11 rounded-xl border-[#1a3d34]/15 bg-[#fcfaf6] px-4"
+          className={ui.fieldInput}
           {...form.register("password")}
         />
         {form.formState.errors.password && (

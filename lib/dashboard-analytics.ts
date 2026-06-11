@@ -1,4 +1,7 @@
+import { colors } from "@/lib/colors";
 import { parseDecimalToPaise, paiseToDecimal } from "@/lib/money";
+
+const BRAND_GREEN = colors.brand.DEFAULT;
 import {
   getPeriodLabel,
   periodStart,
@@ -143,7 +146,7 @@ export async function getDashboardAnalytics(
 
   const pipeline = [
     { name: "Draft", value: statusCounts.draft, fill: "#94a3b8" },
-    { name: "Sent", value: statusCounts.sent, fill: "#1a3d34" },
+    { name: "Sent", value: statusCounts.sent, fill: BRAND_GREEN },
     { name: "Partial", value: statusCounts.partially_paid, fill: "#d97706" },
     { name: "Paid", value: statusCounts.paid, fill: "#059669" },
     { name: "Overdue", value: statusCounts.overdue, fill: "#dc2626" },

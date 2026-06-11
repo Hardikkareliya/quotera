@@ -13,6 +13,8 @@ import {
   YAxis,
 } from "recharts";
 
+import { colors } from "@/lib/colors";
+
 type Props = {
   periodLabel: string;
   revenueByMonth: { label: string; revenue: number }[];
@@ -77,7 +79,7 @@ export function DashboardCharts({
                 />
                 <Bar
                   dataKey="revenue"
-                  fill="#1a3d34"
+                  fill={colors.brand.DEFAULT}
                   radius={[6, 6, 0, 0]}
                   maxBarSize={48}
                 />

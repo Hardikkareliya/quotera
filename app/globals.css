@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./brand-tokens.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -34,37 +35,6 @@
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Quotera — forest green + soft cream */
-:root {
-  --radius: 0.75rem;
-  --background: #f2ebe0;
-  --foreground: #1a3d34;
-  --card: #fcfaf6;
-  --card-foreground: #1a3d34;
-  --popover: #fcfaf6;
-  --popover-foreground: #1a3d34;
-  --primary: #1a3d34;
-  --primary-foreground: #f2ebe0;
-  --secondary: #f8f4ec;
-  --secondary-foreground: #1a3d34;
-  --muted: #f8f4ec;
-  --muted-foreground: #5c6e66;
-  --accent: #e8e0d4;
-  --accent-foreground: #1a3d34;
-  --destructive: #dc2626;
-  --border: #d9cfc0;
-  --input: #d9cfc0;
-  --ring: #1a3d34;
-  --sidebar: #1a3d34;
-  --sidebar-foreground: #f2ebe0;
-  --sidebar-muted: #a8bdb4;
-  --sidebar-active: #2a5c4d;
-  --success: #2a5c4d;
-  --warning: #b45309;
-  --shadow-card: 0 1px 3px 0 rgb(26 61 52 / 0.06), 0 1px 2px -1px rgb(26 61 52 / 0.06);
-  --shadow-md: 0 4px 6px -1px rgb(26 61 52 / 0.08), 0 2px 4px -2px rgb(26 61 52 / 0.05);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -96,14 +66,14 @@
 }
 
 .qt-dialog::backdrop {
-  background: rgb(26 61 52 / 0.45);
+  background: rgb(var(--qt-brand-rgb) / 0.45);
 }
 
 /* Auth brand panel */
 .auth-panel-dots-light {
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgb(26 61 52 / 0.08) 1px,
+    rgb(var(--qt-brand-rgb) / 0.08) 1px,
     transparent 0
   );
   background-size: 24px 24px;
@@ -112,7 +82,7 @@
 .auth-panel-dots-dark {
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgb(242 235 224 / 0.1) 1px,
+    rgb(var(--qt-cream-on-dark-rgb) / 0.1) 1px,
     transparent 0
   );
   background-size: 24px 24px;
@@ -157,9 +127,9 @@
 .auth-panel-promo-shimmer {
   background: linear-gradient(
     90deg,
-    rgb(242 235 224 / 0.85) 0%,
+    rgb(var(--qt-cream-on-dark-rgb) / 0.85) 0%,
     rgb(255 255 255 / 1) 50%,
-    rgb(242 235 224 / 0.85) 100%
+    rgb(var(--qt-cream-on-dark-rgb) / 0.85) 100%
   );
   background-size: 200% auto;
   animation: qt-shimmer 3s linear infinite;
@@ -225,31 +195,6 @@
     opacity: 0.55;
     transform: scale(1.06);
   }
-}
-
-/* Quotera landing — forest green + soft cream */
-.quotera-page {
-  --qt-brand: #1a3d34;
-  --qt-brand-dark: #122b24;
-  --qt-brand-light: #2a5c4d;
-  --qt-brand-soft: #f8f4ec;
-  --qt-brand-text: #1a3d34;
-  --qt-accent: #f2ebe0;
-  --qt-accent-dark: #e5dccf;
-  --qt-cream: #f2ebe0;
-  --qt-cream-light: #f8f4ec;
-  --qt-card: #fcfaf6;
-  --qt-ink: #1a3d34;
-  --qt-muted: #5c6e66;
-  --qt-surface: #f2ebe0;
-  --qt-dark: #1a3d34;
-  --qt-dark-card: #224a3f;
-  --qt-brand-rgb: 26 61 52;
-  --qt-accent-rgb: 242 235 224;
-  --qt-primary-bg: #1a3d34;
-  --qt-primary-text: #f2ebe0;
-  --qt-primary-hover: #122b24;
-  --qt-primary-rgb: 26 61 52;
 }
 
 .quotera-page .quotera-grid-bg {

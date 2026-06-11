@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { DOCUMENT_VISIBILITY_KEYS } from "@/lib/document-visibility";
+import { DEFAULT_CUSTOM_ACCENT } from "@/lib/document-theme";
 import {
   DOCUMENT_STORED_THEME_IDS,
   normalizeHexColor,
@@ -76,7 +77,7 @@ export const organizationSchema = z.object({
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         path: ["documentAccentCustom"],
-        message: "Enter a valid colour (e.g. #1a3d34)",
+        message: `Enter a valid colour (e.g. ${DEFAULT_CUSTOM_ACCENT})`,
       });
     }
   }

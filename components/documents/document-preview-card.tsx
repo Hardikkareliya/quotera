@@ -406,7 +406,7 @@ export function DocumentPreviewCard({
           <div className="mt-6 border-t border-dashed border-neutral-200 pt-4 text-center">
             <p className="text-[10px] leading-relaxed text-neutral-400">
               Powered by{" "}
-              <span className="font-semibold text-[#1a3d34]">{APP_NAME}</span>
+              <span className="font-semibold text-primary">{APP_NAME}</span>
               <span className="text-neutral-300"> · </span>
               {APP_TAGLINE}
             </p>

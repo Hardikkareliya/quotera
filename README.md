@@ -50,6 +50,13 @@ cp .env.example .env.local
 
 Edit `.env.local`:
 
+| Variable | Local value |
+|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anon key |
+| `NEXT_PUBLIC_SITE_URL` | `http://localhost:3000` |
+| `RESEND_API_KEY` | Optional |
+| `RESEND_FROM_EMAIL` | Optional, e.g. `Quotera <onboarding@resend.dev>` |
 
 ### 3. Supabase Auth (local)
 
@@ -75,15 +82,23 @@ npm start
 
 ---
 
+## Brand colors
+
+All brand colours live in one file: **`lib/colors.ts`**.
+
+- Edit hex values there only — dashboard, landing, auth, and PDF themes derive from it.
+- CSS variables are auto-generated into `app/brand-tokens.css` on `dev` and `build`.
+- To regenerate manually: `npm run gen:colors`
+
+Reusable Tailwind class fragments (e.g. form inputs, auth panels) are exported as `ui` from the same file.
+
+---
+
 ## Deploy to Vercel (via GitHub)
 
 ### 1. Push code to GitHub
 
 ```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
 git remote add origin https://github.com/Hardikkareliya/quotera.git
 git push -u origin main
 ```
@@ -92,32 +107,36 @@ git push -u origin main
 
 1. Go to [vercel.com/new](https://vercel.com/new) and import the GitHub repository.
 2. Framework preset: **Next.js** (auto-detected).
-3. Add environment variables (same as `.env.local`, but use your production URL):
+3. Add environment variables:
 
    | Variable | Production value |
    |----------|------------------|
    | `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase URL |
    | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anon key |
-   | `NEXT_PUBLIC_SITE_URL` | `https://your-app.vercel.app` |
+   | `NEXT_PUBLIC_SITE_URL` | `https://quotera.in` |
    | `RESEND_API_KEY` | Optional |
    | `RESEND_FROM_EMAIL` | Optional |
 
 4. Click **Deploy**.
 
-After the first deploy, copy the live Vercel URL, set `NEXT_PUBLIC_SITE_URL` to that exact URL, and **Redeploy**.
+Every `git push` to `main` triggers an automatic Vercel redeploy.
 
-### 3. Supabase Auth (production)
+### 3. Custom domain — quotera.in
+
+1. Vercel → Project → **Settings → Domains**
+2. Add `quotera.in` and `www.quotera.in`
+3. At your domain registrar, either:
+   - **Nameservers (recommended):** point to Vercel (`ns1.vercel-dns.com`, `ns2.vercel-dns.com`), or
+   - **DNS records:** `A` record `@` → `76.76.21.21`, `CNAME` `www` → `cname.vercel-dns.com`
+4. Wait for DNS to propagate; Vercel issues SSL automatically.
+5. Set `NEXT_PUBLIC_SITE_URL` to `https://quotera.in` and **Redeploy**.
+
+### 4. Supabase Auth (production)
 
 In **Authentication → URL Configuration**:
 
-- **Site URL:** `https://your-app.vercel.app`
-- **Redirect URLs:** add `https://your-app.vercel.app/**` and keep `http://localhost:3000/**` for local dev.
-
-### 4. Migrations on production
-
-Run the same migration files (steps 1–9 above) on your **production** Supabase project if you have not already.
-
-Every `git push` to `main` triggers an automatic Vercel redeploy.
+- **Site URL:** `https://quotera.in`
+- **Redirect URLs:** add `https://quotera.in/**` and keep `http://localhost:3000/**` for local dev.
 
 ### Vercel build error: “No Output Directory named public”
 
@@ -164,21 +183,11 @@ This repo includes `vercel.json` with `"framework": "nextjs"` so Vercel detects 
 ## Scripts
 
 ```bash
-npm run dev      # Development server (Turbopack)
-npm run build    # Production build
-npm run start    # Run production build locally
-npm run lint     # ESLint
-npm run db:migrate  # Apply migrations via DATABASE_URL (optional CLI)
-```
-
----
-
-## Regenerate TypeScript types (optional)
-
-After schema changes:
-
-```bash
-npx supabase gen types typescript --project-id YOUR_PROJECT_ID > types/database.generated.ts
+npm run dev        # Development server (Turbopack)
+npm run build      # Production build
+npm run start      # Run production build locally
+npm run lint       # ESLint
+npm run gen:colors # Regenerate CSS tokens from lib/colors.ts
 ```
 
 ---

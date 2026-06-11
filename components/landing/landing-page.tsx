@@ -322,7 +322,7 @@ function FeaturePreview({ variant }: { variant: "collab" | "storage" | "analytic
             <div
               key={initial}
               className="flex size-14 items-center justify-center rounded-full border-4 border-[var(--qt-card)] text-sm font-bold text-[var(--qt-cream)] shadow-md"
-              style={{ background: ["var(--qt-brand)", "var(--qt-brand-light)", "#2a5c4d"][i], zIndex: 3 - i }}
+              style={{ background: ["var(--qt-brand)", "var(--qt-brand-light)", "var(--qt-brand-light)"][i], zIndex: 3 - i }}
             >
               {initial}
             </div>
