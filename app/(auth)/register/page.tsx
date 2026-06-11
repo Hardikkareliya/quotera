@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AuthFormHeader } from "@/components/auth/auth-form-header";
 import { RegisterForm } from "@/components/auth/register-form";
 import { ui } from "@/lib/colors";
-import { LAUNCH_PROMO_CODE, LAUNCH_PROMO_LABEL } from "@/lib/landing-content";
+import { EARLY_ACCESS_NOTE } from "@/lib/landing-content";
 import { cn } from "@/lib/utils";
 
 export default function RegisterPage() {
@@ -11,17 +11,11 @@ export default function RegisterPage() {
     <div className="space-y-6">
       <AuthFormHeader
         title="Create account"
-        subtitle="Join early access and start managing clients, quotes, and invoices."
+        subtitle="Free during early access. Set up your company profile after you sign in."
       />
 
       <div className={ui.promoBox}>
-        <p className={cn("text-[12px] leading-relaxed", ui.muted)}>
-          Use code{" "}
-          <span className={ui.promoBadge}>
-            {LAUNCH_PROMO_CODE}
-          </span>{" "}
-          for {LAUNCH_PROMO_LABEL}.
-        </p>
+        <p className={cn("text-[12px] leading-relaxed", ui.muted)}>{EARLY_ACCESS_NOTE}</p>
       </div>
 
       <RegisterForm />

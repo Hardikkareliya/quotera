@@ -2,6 +2,57 @@ import { ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+export type FigmaButtonVariant =
+  | "primary"
+  | "outline"
+  | "white"
+  | "ghost"
+  | "green";
+
+function figmaButtonClassName(
+  variant: FigmaButtonVariant,
+  className?: string,
+) {
+  return cn(
+    "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-[10px] px-[30px] py-5 text-[18px] font-semibold transition-all duration-300 ease-out",
+    variant === "primary" &&
+      "bg-[var(--qt-primary-bg)] text-[var(--qt-primary-text)] hover:-translate-y-0.5 hover:bg-[var(--qt-primary-hover)] hover:shadow-[0_16px_32px_-12px_rgb(var(--qt-primary-rgb)/0.45)] active:translate-y-0",
+    variant === "green" &&
+      "bg-[var(--qt-brand)] text-[var(--qt-cream)] hover:-translate-y-0.5 hover:bg-[var(--qt-brand-dark)] hover:shadow-[0_16px_32px_-12px_rgb(var(--qt-brand-rgb)/0.4)]",
+    variant === "outline" &&
+      "border-2 border-[var(--qt-brand)] bg-transparent text-[var(--qt-brand)] hover:bg-[var(--qt-brand)]/5",
+    variant === "white" &&
+      "bg-[var(--qt-card)] text-[var(--qt-brand)] shadow-[0_4px_9px_rgb(var(--qt-brand-rgb) /0.08)] hover:-translate-y-0.5 hover:bg-[var(--qt-cream-light)]",
+    variant === "ghost" &&
+      "bg-transparent text-[var(--qt-muted)] hover:text-[var(--qt-brand)]",
+    className,
+  );
+}
+
+function FigmaButtonContent({
+  children,
+  showArrow,
+  variant,
+}: {
+  children: React.ReactNode;
+  showArrow?: boolean;
+  variant: FigmaButtonVariant;
+}) {
+  return (
+    <>
+      {variant === "primary" ? (
+        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      ) : null}
+      <span className="relative inline-flex items-center gap-2">
+        {children}
+        {showArrow ? (
+          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+        ) : null}
+      </span>
+    </>
+  );
+}
+
 export function FigmaButton({
   href,
   children,
@@ -13,7 +64,7 @@ export function FigmaButton({
   href: string;
   children: React.ReactNode;
   className?: string;
-  variant?: "primary" | "outline" | "white" | "ghost" | "green";
+  variant?: FigmaButtonVariant;
   onClick?: () => void;
   showArrow?: boolean;
 }) {
@@ -21,31 +72,40 @@ export function FigmaButton({
     <a
       href={href}
       onClick={onClick}
-      className={cn(
-        "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-[10px] px-[30px] py-5 text-[18px] font-semibold transition-all duration-300 ease-out",
-        variant === "primary" &&
-          "bg-[var(--qt-primary-bg)] text-[var(--qt-primary-text)] hover:-translate-y-0.5 hover:bg-[var(--qt-primary-hover)] hover:shadow-[0_16px_32px_-12px_rgb(var(--qt-primary-rgb)/0.45)] active:translate-y-0",
-        variant === "green" &&
-          "bg-[var(--qt-brand)] text-[var(--qt-cream)] hover:-translate-y-0.5 hover:bg-[var(--qt-brand-dark)] hover:shadow-[0_16px_32px_-12px_rgb(var(--qt-brand-rgb)/0.4)]",
-        variant === "outline" &&
-          "border-2 border-[var(--qt-brand)] bg-transparent text-[var(--qt-brand)] hover:bg-[var(--qt-brand)]/5",
-        variant === "white" &&
-          "bg-[var(--qt-card)] text-[var(--qt-brand)] shadow-[0_4px_9px_rgb(var(--qt-brand-rgb) /0.08)] hover:-translate-y-0.5 hover:bg-[var(--qt-cream-light)]",
-        variant === "ghost" &&
-          "bg-transparent text-[var(--qt-muted)] hover:text-[var(--qt-brand)]",
-        className,
-      )}
+      className={figmaButtonClassName(variant, className)}
     >
-      {variant === "primary" ? (
-        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-      ) : null}
-      <span className="relative inline-flex items-center gap-2">
+      <FigmaButtonContent showArrow={showArrow} variant={variant}>
         {children}
-        {showArrow ? (
-          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-        ) : null}
-      </span>
+      </FigmaButtonContent>
     </a>
+  );
+}
+
+export function FigmaButtonAction({
+  children,
+  className,
+  variant = "primary",
+  onClick,
+  showArrow,
+  type = "button",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  variant?: FigmaButtonVariant;
+  onClick?: () => void;
+  showArrow?: boolean;
+  type?: "button" | "submit";
+}) {
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      className={figmaButtonClassName(variant, className)}
+    >
+      <FigmaButtonContent showArrow={showArrow} variant={variant}>
+        {children}
+      </FigmaButtonContent>
+    </button>
   );
 }
 

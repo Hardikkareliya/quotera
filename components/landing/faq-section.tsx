@@ -21,7 +21,7 @@ export function FaqSection() {
             Frequently Asked Questions
           </SectionTitle>
           <SectionSubtitle className="mx-auto mt-4 max-w-xl">
-            Everything you need to know about Quotera early access
+            Honest answers about what Quotera does today
           </SectionSubtitle>
         </Reveal>
 

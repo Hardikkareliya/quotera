@@ -4,7 +4,7 @@ import { AuthDashboardPreview } from "@/components/auth/auth-dashboard-preview";
 import { QuoteraLogo } from "@/components/brand/quotera-logo";
 import { APP_NAME } from "@/lib/app-brand";
 import { colors, ui } from "@/lib/colors";
-import { LAUNCH_PROMO_CODE, LAUNCH_PROMO_LABEL } from "@/lib/landing-content";
+import { EARLY_ACCESS_NOTE } from "@/lib/landing-content";
 import { cn } from "@/lib/utils";
 
 const trustPoints = [
@@ -87,14 +87,9 @@ export function AuthBrandPanel() {
         </div>
 
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--qt-cream-on-dark)]/10 pt-6">
-          <div className="inline-flex items-center gap-2.5 rounded-[12px] border border-[var(--qt-cream-on-dark)]/12 bg-[var(--qt-cream-on-dark)]/10 px-3.5 py-2.5">
-            <span className={cn("auth-panel-promo-shimmer rounded-md px-2 py-0.5 text-[11px] font-bold", ui.ink)}>
-              {LAUNCH_PROMO_CODE}
-            </span>
-            <span className={cn("text-[11px] font-medium", ui.onDark, "opacity-75")}>
-              {LAUNCH_PROMO_LABEL}
-            </span>
-          </div>
+          <p className={cn("max-w-sm text-[11px] leading-relaxed", ui.onDark, "opacity-75")}>
+            {EARLY_ACCESS_NOTE}
+          </p>
           <p className={cn("text-[11px]", ui.onDarkFaint)}>
             © {new Date().getFullYear()} {APP_NAME}
           </p>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Outfit } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { AppToaster } from "@/components/app-toaster";
 import "./globals.css";
@@ -21,7 +22,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Quotera — Client to payment management system for SMBs",
   description:
-    "Client to payment management system for SMBs. Manage clients, GST quotations, invoices, and payments in one place. Early access open — use code LAUNCH2026 for 3 months free.",
+    "Client to payment management system for SMBs. Manage clients, GST quotations, invoices, and payments in one place. Free during early access.",
   icons: {
     icon: "/brand/logo.svg",
   },
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className={`${dmSans.variable} ${outfit.variable} min-h-screen font-sans antialiased`}>
         {children}
         <AppToaster />
+        <SpeedInsights />
       </body>
     </html>
   );

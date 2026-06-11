@@ -1,35 +1,24 @@
 "use client";
 
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { QuoteraLogo } from "@/components/brand/quotera-logo";
-import { LAUNCH_PROMO_CODE, landingNav } from "@/lib/landing-content";
+import { EARLY_ACCESS_NOTE, landingNav } from "@/lib/landing-content";
 import { cn } from "@/lib/utils";
 
-import { FigmaButton } from "./landing-ui";
-
-type LandingNavProps = {
-  registerHref: string;
-};
+import { EarlyAccessCtaButton } from "./early-access-cta";
 
 export function PromoBar() {
   return (
     <div className="relative overflow-hidden bg-[var(--qt-brand)] px-4 py-2.5 text-center text-[13px] font-medium text-[var(--qt-cream)] sm:text-[14px]">
       <div className="absolute inset-0 bg-gradient-to-r from-[var(--qt-accent)]/10 via-transparent to-[var(--qt-accent)]/10" />
-      <p className="relative">
-        Early access open · Use code{" "}
-        <span className="quotera-promo-shimmer rounded-md px-2 py-0.5 font-bold text-[var(--qt-brand)]">
-          {LAUNCH_PROMO_CODE}
-        </span>{" "}
-        for 3 months free
-      </p>
+      <p className="relative">{EARLY_ACCESS_NOTE}</p>
     </div>
   );
 }
 
-export function LandingNav({ registerHref }: LandingNavProps) {
+export function LandingNav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -76,16 +65,10 @@ export function LandingNav({ registerHref }: LandingNavProps) {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-6 lg:flex">
-            <Link
-              href="/login"
-              className="text-[16px] font-medium text-[var(--qt-muted)] transition-colors hover:text-[var(--qt-brand)]"
-            >
-              Login
-            </Link>
-            <FigmaButton href={registerHref} className="!px-5 !py-2.5 text-[16px]" showArrow>
-              Sign Up
-            </FigmaButton>
+          <div className="hidden lg:flex">
+            <EarlyAccessCtaButton className="!px-5 !py-2.5 text-[16px]" showArrow>
+              Apply for early access
+            </EarlyAccessCtaButton>
           </div>
 
           <button
@@ -125,22 +108,14 @@ export function LandingNav({ registerHref }: LandingNavProps) {
             </a>
           ))}
         </nav>
-        <div className="mt-4 grid gap-2 border-t border-[var(--qt-brand)]/10 pt-4">
-          <Link
-            href="/login"
-            onClick={() => setOpen(false)}
-            className="rounded-[10px] px-3 py-3 text-center font-medium text-[var(--qt-brand)]"
-          >
-            Login
-          </Link>
-          <FigmaButton
-            href={registerHref}
+        <div className="mt-4 border-t border-[var(--qt-brand)]/10 pt-4">
+          <EarlyAccessCtaButton
             className="w-full !py-3 text-[16px]"
-            onClick={() => setOpen(false)}
             showArrow
+            onAfterClick={() => setOpen(false)}
           >
-            Sign Up
-          </FigmaButton>
+            Apply for early access
+          </EarlyAccessCtaButton>
         </div>
       </div>
     </>
