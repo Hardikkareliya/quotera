@@ -1,2 +1,2 @@
-export const APP_NAME = "FlexHub";
-export const APP_TAGLINE = "Business OS for India";
+export const APP_NAME = "Quotera";
+export const APP_TAGLINE = "Client to payment management system for SMBs";

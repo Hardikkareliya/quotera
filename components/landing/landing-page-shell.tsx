@@ -8,7 +8,7 @@ export function LandingPageShell({ children }: LandingPageShellProps) {
   return (
     <div
       className={cn(
-        "flexhub-page scroll-smooth bg-[var(--fh-cream)] text-[var(--fh-ink)] antialiased",
+        "quotera-page scroll-smooth bg-[var(--qt-cream)] text-[var(--qt-ink)] antialiased",
       )}
     >
       {children}

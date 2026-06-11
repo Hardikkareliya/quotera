@@ -11,10 +11,10 @@ type RevealProps = {
 };
 
 const directionClass = {
-  up: "flexhub-enter",
-  left: "flexhub-enter flexhub-enter-from-left",
-  right: "flexhub-enter flexhub-enter-from-right",
-  none: "flexhub-enter flexhub-enter-fade",
+  up: "quotera-enter",
+  left: "quotera-enter quotera-enter-from-left",
+  right: "quotera-enter quotera-enter-from-right",
+  none: "quotera-enter quotera-enter-fade",
 } as const;
 
 /** CSS-only entrance — no IntersectionObserver, no client JS. */

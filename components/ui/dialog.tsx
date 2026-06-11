@@ -43,7 +43,7 @@ export function Dialog({
   return createPortal(
     <dialog
       ref={ref}
-      className={cn("fh-dialog", className)}
+      className={cn("qt-dialog", className)}
       onClose={() => onOpenChange(false)}
       onCancel={(e) => {
         e.preventDefault();

@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 type LogoVariant = "on-dark" | "on-light" | "on-cream" | "sidebar";
 
-type FlexHubLogoProps = {
+type QuoteraLogoProps = {
   className?: string;
   href?: string;
   showWordmark?: boolean;
@@ -28,13 +28,13 @@ const wordmarkSizes = {
   xl: "text-[32px] sm:text-[40px]",
 } as const;
 
-export function FlexHubLogoMark({
+export function QuoteraLogoMark({
   className,
   size = "md",
   variant = "on-dark",
 }: {
   className?: string;
-  size?: FlexHubLogoProps["size"];
+  size?: QuoteraLogoProps["size"];
   variant?: LogoVariant;
 }) {
   const palette =
@@ -66,14 +66,14 @@ export function FlexHubLogoMark({
   );
 }
 
-export function FlexHubLogo({
+export function QuoteraLogo({
   className,
   href,
   showWordmark = true,
   showTagline = false,
   size = "md",
   variant = "on-dark",
-}: FlexHubLogoProps) {
+}: QuoteraLogoProps) {
   const textColor =
     variant === "on-light" || variant === "on-cream"
       ? "text-[#1a3d34]"
@@ -90,7 +90,7 @@ export function FlexHubLogo({
 
   const content = (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <FlexHubLogoMark size={size} variant={variant} />
+      <QuoteraLogoMark size={size} variant={variant} />
       {showWordmark ? (
         <span className="min-w-0 text-left leading-none">
           <span

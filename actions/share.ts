@@ -34,7 +34,7 @@ export async function emailDocumentAction(input: {
   const label = input.type === "quotation" ? "Quotation" : "Invoice";
 
   const { error } = await resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL ?? "FlexHub <onboarding@resend.dev>",
+    from: process.env.RESEND_FROM_EMAIL ?? "Quotera <onboarding@resend.dev>",
     to: input.toEmail,
     subject: `${label} ${doc.number} from ${org.name}`,
     html: `<p>Please find your ${label.toLowerCase()} <strong>${doc.number}</strong> (₹${doc.total}) from ${org.name}.</p><p><a href="${input.pdfUrl}">Download PDF</a></p>`,

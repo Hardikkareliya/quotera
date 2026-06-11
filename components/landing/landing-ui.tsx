@@ -24,15 +24,15 @@ export function FigmaButton({
       className={cn(
         "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-[10px] px-[30px] py-5 text-[18px] font-semibold transition-all duration-300 ease-out",
         variant === "primary" &&
-          "bg-[var(--fh-primary-bg)] text-[var(--fh-primary-text)] hover:-translate-y-0.5 hover:bg-[var(--fh-primary-hover)] hover:shadow-[0_16px_32px_-12px_rgb(var(--fh-primary-rgb)/0.45)] active:translate-y-0",
+          "bg-[var(--qt-primary-bg)] text-[var(--qt-primary-text)] hover:-translate-y-0.5 hover:bg-[var(--qt-primary-hover)] hover:shadow-[0_16px_32px_-12px_rgb(var(--qt-primary-rgb)/0.45)] active:translate-y-0",
         variant === "green" &&
-          "bg-[var(--fh-brand)] text-[var(--fh-cream)] hover:-translate-y-0.5 hover:bg-[var(--fh-brand-dark)] hover:shadow-[0_16px_32px_-12px_rgb(var(--fh-brand-rgb)/0.4)]",
+          "bg-[var(--qt-brand)] text-[var(--qt-cream)] hover:-translate-y-0.5 hover:bg-[var(--qt-brand-dark)] hover:shadow-[0_16px_32px_-12px_rgb(var(--qt-brand-rgb)/0.4)]",
         variant === "outline" &&
-          "border-2 border-[var(--fh-brand)] bg-transparent text-[var(--fh-brand)] hover:bg-[var(--fh-brand)]/5",
+          "border-2 border-[var(--qt-brand)] bg-transparent text-[var(--qt-brand)] hover:bg-[var(--qt-brand)]/5",
         variant === "white" &&
-          "bg-[var(--fh-card)] text-[var(--fh-brand)] shadow-[0_4px_9px_rgb(var(--fh-brand-rgb) /0.08)] hover:-translate-y-0.5 hover:bg-[var(--fh-cream-light)]",
+          "bg-[var(--qt-card)] text-[var(--qt-brand)] shadow-[0_4px_9px_rgb(var(--qt-brand-rgb) /0.08)] hover:-translate-y-0.5 hover:bg-[var(--qt-cream-light)]",
         variant === "ghost" &&
-          "bg-transparent text-[var(--fh-muted)] hover:text-[var(--fh-brand)]",
+          "bg-transparent text-[var(--qt-muted)] hover:text-[var(--qt-brand)]",
         className,
       )}
     >
@@ -59,7 +59,7 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border border-[var(--fh-brand)]/15 bg-[var(--fh-cream-light)] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--fh-brand)]",
+        "inline-flex items-center rounded-full border border-[var(--qt-brand)]/15 bg-[var(--qt-cream-light)] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--qt-brand)]",
         className,
       )}
     >
@@ -71,10 +71,10 @@ export function Eyebrow({
 export function FigmaCheck({ children }: { children: React.ReactNode }) {
   return (
     <li className="group flex items-start gap-4 transition-transform duration-300 hover:translate-x-1">
-      <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--fh-accent)] text-sm font-bold text-[var(--fh-brand)] shadow-[0_4px_12px_rgb(var(--fh-accent-rgb)/0.35)] transition-transform duration-300 group-hover:scale-110">
+      <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--qt-accent)] text-sm font-bold text-[var(--qt-brand)] shadow-[0_4px_12px_rgb(var(--qt-accent-rgb)/0.35)] transition-transform duration-300 group-hover:scale-110">
         ✓
       </span>
-      <span className="text-[18px] font-medium leading-[30px] text-[var(--fh-ink)]">
+      <span className="text-[18px] font-medium leading-[30px] text-[var(--qt-ink)]">
         {children}
       </span>
     </li>
@@ -94,7 +94,7 @@ export function SectionTitle({
     <h2
       className={cn(
         "font-[family-name:var(--font-outfit)] text-[36px] font-bold leading-[1.15] tracking-tight sm:text-[50px]",
-        light ? "text-[var(--fh-cream)]" : "text-[var(--fh-ink)]",
+        light ? "text-[var(--qt-cream)]" : "text-[var(--qt-ink)]",
         className,
       )}
     >
@@ -116,7 +116,7 @@ export function SectionSubtitle({
     <p
       className={cn(
         "text-[16px] font-medium leading-[30px] sm:text-[18px]",
-        light ? "text-[var(--fh-cream)]/80" : "text-[var(--fh-muted)]",
+        light ? "text-[var(--qt-cream)]/80" : "text-[var(--qt-muted)]",
         className,
       )}
     >
@@ -135,7 +135,7 @@ export function FigmaCard({
   return (
     <div
       className={cn(
-        "rounded-[20px] border border-[var(--fh-brand)]/18 bg-[var(--fh-card)] shadow-[0_8px_24px_rgb(var(--fh-brand-rgb)/0.08)] ring-1 ring-[var(--fh-brand)]/5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[var(--fh-brand)]/30 hover:shadow-[0_20px_40px_rgb(var(--fh-brand-rgb)/0.12)] hover:ring-[var(--fh-brand)]/10",
+        "rounded-[20px] border border-[var(--qt-brand)]/18 bg-[var(--qt-card)] shadow-[0_8px_24px_rgb(var(--qt-brand-rgb)/0.08)] ring-1 ring-[var(--qt-brand)]/5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[var(--qt-brand)]/30 hover:shadow-[0_20px_40px_rgb(var(--qt-brand-rgb)/0.12)] hover:ring-[var(--qt-brand)]/10",
         className,
       )}
     >
@@ -154,7 +154,7 @@ export function FloatingChip({
   return (
     <div
       className={cn(
-        "rounded-[10px] border border-[var(--fh-brand)]/10 bg-[var(--fh-card)]/95 px-4 py-3 shadow-[0_8px_24px_rgb(var(--fh-brand-rgb) /0.1)] backdrop-blur-sm",
+        "rounded-[10px] border border-[var(--qt-brand)]/10 bg-[var(--qt-card)]/95 px-4 py-3 shadow-[0_8px_24px_rgb(var(--qt-brand-rgb) /0.1)] backdrop-blur-sm",
         className,
       )}
     >

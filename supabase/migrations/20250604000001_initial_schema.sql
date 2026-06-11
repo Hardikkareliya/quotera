@@ -1,4 +1,4 @@
--- FlexHub MVP schema + RLS + atomic numbering
+-- Quotera MVP schema + RLS + atomic numbering
 -- ORDER: tables → indexes → functions → RLS → storage
 
 -- ---------------------------------------------------------------------------

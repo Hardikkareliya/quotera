@@ -15,7 +15,7 @@ export function FloatCard({
 }) {
   return (
     <div
-      className={cn("flexhub-float motion-reduce:animate-none", className)}
+      className={cn("quotera-float motion-reduce:animate-none", className)}
       style={{ animationDelay: `${delay}ms` }}
     >
       {children}

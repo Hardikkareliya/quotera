@@ -34,7 +34,7 @@
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* FlexHub — Ravo forest green + soft cream */
+/* Quotera — forest green + soft cream */
 :root {
   --radius: 0.75rem;
   --background: #f2ebe0;
@@ -83,7 +83,7 @@
   }
 }
 
-.fh-dialog {
+.qt-dialog {
   width: calc(100% - 2rem);
   max-width: 32rem;
   margin: auto;
@@ -95,7 +95,7 @@
   box-shadow: var(--shadow-md);
 }
 
-.fh-dialog::backdrop {
+.qt-dialog::backdrop {
   background: rgb(26 61 52 / 0.45);
 }
 
@@ -162,7 +162,7 @@
     rgb(242 235 224 / 0.85) 100%
   );
   background-size: 200% auto;
-  animation: fh-shimmer 3s linear infinite;
+  animation: qt-shimmer 3s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -175,8 +175,8 @@
   }
 }
 
-/* FlexHub landing — brand tokens + motion */
-@keyframes fh-float {
+/* Quotera landing — brand tokens + motion */
+@keyframes qt-float {
   0%,
   100% {
     transform: translateY(0);
@@ -186,7 +186,7 @@
   }
 }
 
-@keyframes fh-fade-up {
+@keyframes qt-fade-up {
   from {
     opacity: 0;
     transform: translateY(24px);
@@ -197,7 +197,7 @@
   }
 }
 
-@keyframes fh-marquee {
+@keyframes qt-marquee {
   from {
     transform: translateX(0);
   }
@@ -206,7 +206,7 @@
   }
 }
 
-@keyframes fh-shimmer {
+@keyframes qt-shimmer {
   0% {
     background-position: 200% center;
   }
@@ -215,7 +215,7 @@
   }
 }
 
-@keyframes fh-glow {
+@keyframes qt-glow {
   0%,
   100% {
     opacity: 0.35;
@@ -227,66 +227,66 @@
   }
 }
 
-/* FlexHub landing — Ravo forest green + soft cream */
-.flexhub-page {
-  --fh-brand: #1a3d34;
-  --fh-brand-dark: #122b24;
-  --fh-brand-light: #2a5c4d;
-  --fh-brand-soft: #f8f4ec;
-  --fh-brand-text: #1a3d34;
-  --fh-accent: #f2ebe0;
-  --fh-accent-dark: #e5dccf;
-  --fh-cream: #f2ebe0;
-  --fh-cream-light: #f8f4ec;
-  --fh-card: #fcfaf6;
-  --fh-ink: #1a3d34;
-  --fh-muted: #5c6e66;
-  --fh-surface: #f2ebe0;
-  --fh-dark: #1a3d34;
-  --fh-dark-card: #224a3f;
-  --fh-brand-rgb: 26 61 52;
-  --fh-accent-rgb: 242 235 224;
-  --fh-primary-bg: #1a3d34;
-  --fh-primary-text: #f2ebe0;
-  --fh-primary-hover: #122b24;
-  --fh-primary-rgb: 26 61 52;
+/* Quotera landing — forest green + soft cream */
+.quotera-page {
+  --qt-brand: #1a3d34;
+  --qt-brand-dark: #122b24;
+  --qt-brand-light: #2a5c4d;
+  --qt-brand-soft: #f8f4ec;
+  --qt-brand-text: #1a3d34;
+  --qt-accent: #f2ebe0;
+  --qt-accent-dark: #e5dccf;
+  --qt-cream: #f2ebe0;
+  --qt-cream-light: #f8f4ec;
+  --qt-card: #fcfaf6;
+  --qt-ink: #1a3d34;
+  --qt-muted: #5c6e66;
+  --qt-surface: #f2ebe0;
+  --qt-dark: #1a3d34;
+  --qt-dark-card: #224a3f;
+  --qt-brand-rgb: 26 61 52;
+  --qt-accent-rgb: 242 235 224;
+  --qt-primary-bg: #1a3d34;
+  --qt-primary-text: #f2ebe0;
+  --qt-primary-hover: #122b24;
+  --qt-primary-rgb: 26 61 52;
 }
 
-.flexhub-page .flexhub-grid-bg {
+.quotera-page .quotera-grid-bg {
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgb(var(--fh-brand-rgb) / 0.06) 1px,
+    rgb(var(--qt-brand-rgb) / 0.06) 1px,
     transparent 0
   );
   background-size: 28px 28px;
 }
 
-.flexhub-float {
-  animation: fh-float 6s ease-in-out infinite;
+.quotera-float {
+  animation: qt-float 6s ease-in-out infinite;
 }
 
-.flexhub-enter {
-  animation: fh-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+.quotera-enter {
+  animation: qt-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.flexhub-enter-1 { animation-delay: 0.1s; }
-.flexhub-enter-2 { animation-delay: 0.2s; }
-.flexhub-enter-3 { animation-delay: 0.3s; }
-.flexhub-enter-4 { animation-delay: 0.4s; }
+.quotera-enter-1 { animation-delay: 0.1s; }
+.quotera-enter-2 { animation-delay: 0.2s; }
+.quotera-enter-3 { animation-delay: 0.3s; }
+.quotera-enter-4 { animation-delay: 0.4s; }
 
-.flexhub-enter-from-left {
-  animation-name: fh-fade-left;
+.quotera-enter-from-left {
+  animation-name: qt-fade-left;
 }
 
-.flexhub-enter-from-right {
-  animation-name: fh-fade-right;
+.quotera-enter-from-right {
+  animation-name: qt-fade-right;
 }
 
-.flexhub-enter-fade {
-  animation-name: fh-fade-in;
+.quotera-enter-fade {
+  animation-name: qt-fade-in;
 }
 
-@keyframes fh-fade-left {
+@keyframes qt-fade-left {
   from {
     opacity: 0;
     transform: translateX(-24px);
@@ -297,7 +297,7 @@
   }
 }
 
-@keyframes fh-fade-right {
+@keyframes qt-fade-right {
   from {
     opacity: 0;
     transform: translateX(24px);
@@ -308,7 +308,7 @@
   }
 }
 
-@keyframes fh-fade-in {
+@keyframes qt-fade-in {
   from {
     opacity: 0;
   }
@@ -317,30 +317,30 @@
   }
 }
 
-.flexhub-marquee {
-  animation: fh-marquee 28s linear infinite;
+.quotera-marquee {
+  animation: qt-marquee 28s linear infinite;
 }
 
-.flexhub-promo-shimmer {
+.quotera-promo-shimmer {
   background: linear-gradient(
     90deg,
-    rgb(var(--fh-accent-rgb) / 0.45) 0%,
-    rgb(var(--fh-accent-rgb) / 0.85) 50%,
-    rgb(var(--fh-accent-rgb) / 0.45) 100%
+    rgb(var(--qt-accent-rgb) / 0.45) 0%,
+    rgb(var(--qt-accent-rgb) / 0.85) 50%,
+    rgb(var(--qt-accent-rgb) / 0.45) 100%
   );
   background-size: 200% auto;
-  animation: fh-shimmer 3.5s linear infinite;
+  animation: qt-shimmer 3.5s linear infinite;
 }
 
-.flexhub-glow {
-  animation: fh-glow 7s ease-in-out infinite;
+.quotera-glow {
+  animation: qt-glow 7s ease-in-out infinite;
 }
 
-.flexhub-nav-link {
+.quotera-nav-link {
   position: relative;
 }
 
-.flexhub-nav-link::after {
+.quotera-nav-link::after {
   content: "";
   position: absolute;
   left: 0;
@@ -348,33 +348,33 @@
   height: 2px;
   width: 0;
   border-radius: 999px;
-  background: var(--fh-primary-bg);
+  background: var(--qt-primary-bg);
   transition: width 0.3s ease;
 }
 
-.flexhub-nav-link:hover::after {
+.quotera-nav-link:hover::after {
   width: 100%;
 }
 
-.flexhub-grid-bg {
+.quotera-grid-bg {
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgb(var(--fh-brand-rgb) / 0.09) 1px,
+    rgb(var(--qt-brand-rgb) / 0.09) 1px,
     transparent 0
   );
   background-size: 32px 32px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .flexhub-float,
-  .flexhub-enter,
-  .flexhub-enter-1,
-  .flexhub-enter-2,
-  .flexhub-enter-3,
-  .flexhub-enter-4,
-  .flexhub-marquee,
-  .flexhub-promo-shimmer,
-  .flexhub-glow {
+  .quotera-float,
+  .quotera-enter,
+  .quotera-enter-1,
+  .quotera-enter-2,
+  .quotera-enter-3,
+  .quotera-enter-4,
+  .quotera-marquee,
+  .quotera-promo-shimmer,
+  .quotera-glow {
     animation: none !important;
   }
 }

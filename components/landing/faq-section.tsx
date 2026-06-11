@@ -13,7 +13,7 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-[var(--fh-cream)] py-20 sm:py-28">
+    <section id="faq" className="bg-[var(--qt-cream)] py-20 sm:py-28">
       <div className="mx-auto max-w-[820px] px-4 sm:px-8">
         <Reveal className="text-center">
           <Eyebrow>FAQ</Eyebrow>
@@ -21,7 +21,7 @@ export function FaqSection() {
             Frequently Asked Questions
           </SectionTitle>
           <SectionSubtitle className="mx-auto mt-4 max-w-xl">
-            Everything you need to know about FlexHub early access
+            Everything you need to know about Quotera early access
           </SectionSubtitle>
         </Reveal>
 
@@ -32,23 +32,23 @@ export function FaqSection() {
               <Reveal key={item.question} delay={index * 50}>
                 <div
                   className={cn(
-                    "overflow-hidden rounded-[12px] border bg-[var(--fh-card)] transition-all duration-300",
+                    "overflow-hidden rounded-[12px] border bg-[var(--qt-card)] transition-all duration-300",
                     open
-                      ? "border-[var(--fh-accent)]/50 shadow-[0_12px_32px_rgb(var(--fh-brand-rgb)/0.1)]"
-                      : "border-[var(--fh-brand)]/10 hover:border-[var(--fh-brand)]/25",
+                      ? "border-[var(--qt-accent)]/50 shadow-[0_12px_32px_rgb(var(--qt-brand-rgb)/0.1)]"
+                      : "border-[var(--qt-brand)]/10 hover:border-[var(--qt-brand)]/25",
                   )}
                 >
                   <button
                     type="button"
                     onClick={() => setOpenIndex(open ? null : index)}
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-[var(--fh-cream-light)]/80"
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-[var(--qt-cream-light)]/80"
                   >
-                    <span className="text-[16px] font-semibold text-[var(--fh-ink)] sm:text-[18px]">
+                    <span className="text-[16px] font-semibold text-[var(--qt-ink)] sm:text-[18px]">
                       {item.question}
                     </span>
                     <ChevronDown
                       className={cn(
-                        "size-5 shrink-0 text-[var(--fh-accent)] transition-transform duration-300",
+                        "size-5 shrink-0 text-[var(--qt-accent)] transition-transform duration-300",
                         open && "rotate-180",
                       )}
                     />
@@ -60,8 +60,8 @@ export function FaqSection() {
                     )}
                   >
                     <div className="overflow-hidden">
-                      <div className="border-t border-[var(--fh-brand)]/8 px-5 pb-4 pt-3">
-                        <p className="text-[16px] leading-[28px] text-[var(--fh-muted)]">
+                      <div className="border-t border-[var(--qt-brand)]/8 px-5 pb-4 pt-3">
+                        <p className="text-[16px] leading-[28px] text-[var(--qt-muted)]">
                           {item.answer}
                         </p>
                       </div>
@@ -74,19 +74,19 @@ export function FaqSection() {
         </div>
 
         <Reveal delay={100} className="mt-10 text-center">
-          <p className="text-[14px] text-[var(--fh-muted)]">Still have questions?</p>
+          <p className="text-[14px] text-[var(--qt-muted)]">Still have questions?</p>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
             <a
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-[10px] bg-[var(--fh-brand)] px-5 py-2.5 text-[14px] font-semibold text-[var(--fh-cream)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--fh-brand-dark)] hover:shadow-[0_12px_24px_rgb(var(--fh-brand-rgb)/0.35)]"
+              className="inline-flex items-center rounded-[10px] bg-[var(--qt-brand)] px-5 py-2.5 text-[14px] font-semibold text-[var(--qt-cream)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--qt-brand-dark)] hover:shadow-[0_12px_24px_rgb(var(--qt-brand-rgb)/0.35)]"
             >
               WhatsApp Support
             </a>
             <a
-              href="mailto:hello@flexhub.in"
-              className="inline-flex items-center rounded-[10px] border border-[var(--fh-brand)]/15 bg-[var(--fh-card)] px-5 py-2.5 text-[14px] font-semibold text-[var(--fh-brand)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--fh-accent)] hover:bg-[var(--fh-accent)]/10"
+              href="mailto:hello@quotera.in"
+              className="inline-flex items-center rounded-[10px] border border-[var(--qt-brand)]/15 bg-[var(--qt-card)] px-5 py-2.5 text-[14px] font-semibold text-[var(--qt-brand)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--qt-accent)] hover:bg-[var(--qt-accent)]/10"
             >
               Email us
             </a>

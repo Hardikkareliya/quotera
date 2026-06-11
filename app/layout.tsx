@@ -19,9 +19,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "FlexHub — Business OS for Indian freelancers & SMBs",
+  title: "Quotera — Client to payment management system for SMBs",
   description:
-    "Manage clients, GST quotations, invoices, and payments in one place. Early access open — use code LAUNCH2026 for 3 months free.",
+    "Client to payment management system for SMBs. Manage clients, GST quotations, invoices, and payments in one place. Early access open — use code LAUNCH2026 for 3 months free.",
   icons: {
     icon: "/brand/logo.svg",
   },

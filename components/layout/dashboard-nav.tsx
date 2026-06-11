@@ -11,7 +11,7 @@ import {
   Users,
 } from "lucide-react";
 
-import { FlexHubLogo } from "@/components/brand/flexhub-logo";
+import { QuoteraLogo } from "@/components/brand/quotera-logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -35,7 +35,7 @@ export function DashboardNav({
   return (
     <>
       <div className="mb-6 px-2">
-        <FlexHubLogo
+        <QuoteraLogo
           href="/dashboard"
           size="md"
           variant="sidebar"

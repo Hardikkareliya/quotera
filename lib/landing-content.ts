@@ -60,7 +60,7 @@ export const benefits = [
 
 export const faqItems = [
   {
-    question: "Is FlexHub free right now?",
+    question: "Is Quotera free right now?",
     answer:
       "Yes — we're in early access. Sign up for limited-time free access while we validate the product with real businesses. Use promo code LAUNCH2026 when you register for 3 months free.",
   },
@@ -77,10 +77,10 @@ export const faqItems = [
   {
     question: "Do I need technical knowledge?",
     answer:
-      "No. FlexHub is built for business owners, not developers. If you can use WhatsApp and email, you can use FlexHub.",
+      "No. Quotera is built for business owners, not developers. If you can use WhatsApp and email, you can use Quotera.",
   },
   {
-    question: "What happens to my data if I stop using FlexHub?",
+    question: "What happens to my data if I stop using Quotera?",
     answer:
       "Your data remains in your Supabase-backed account. You can export PDFs anytime. We never sell your business data.",
   },

@@ -1,6 +1,6 @@
-# FlexHub
+# Quotera
 
-**Business invoicing made simple** — manage clients, GST quotations, tax invoices, and payments in one place. Built for Indian freelancers, agencies, and small businesses.
+**Client to payment management system for SMBs** — manage clients, GST quotations, tax invoices, and payments in one place.
 
 ## Features
 
@@ -37,8 +37,8 @@
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/FlexHub.git
-cd FlexHub
+git clone https://github.com/Hardikkareliya/quotera.git
+cd quotera
 npm install
 ```
 
@@ -84,7 +84,7 @@ git init
 git add .
 git commit -m "Initial commit"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/FlexHub.git
+git remote add origin https://github.com/Hardikkareliya/quotera.git
 git push -u origin main
 ```
 

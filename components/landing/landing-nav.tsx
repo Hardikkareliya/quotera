@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { FlexHubLogo } from "@/components/brand/flexhub-logo";
+import { QuoteraLogo } from "@/components/brand/quotera-logo";
 import { LAUNCH_PROMO_CODE, landingNav } from "@/lib/landing-content";
 import { cn } from "@/lib/utils";
 
@@ -16,11 +16,11 @@ type LandingNavProps = {
 
 export function PromoBar() {
   return (
-    <div className="relative overflow-hidden bg-[var(--fh-brand)] px-4 py-2.5 text-center text-[13px] font-medium text-[var(--fh-cream)] sm:text-[14px]">
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--fh-accent)]/10 via-transparent to-[var(--fh-accent)]/10" />
+    <div className="relative overflow-hidden bg-[var(--qt-brand)] px-4 py-2.5 text-center text-[13px] font-medium text-[var(--qt-cream)] sm:text-[14px]">
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--qt-accent)]/10 via-transparent to-[var(--qt-accent)]/10" />
       <p className="relative">
         Early access open · Use code{" "}
-        <span className="flexhub-promo-shimmer rounded-md px-2 py-0.5 font-bold text-[var(--fh-brand)]">
+        <span className="quotera-promo-shimmer rounded-md px-2 py-0.5 font-bold text-[var(--qt-brand)]">
           {LAUNCH_PROMO_CODE}
         </span>{" "}
         for 3 months free
@@ -54,12 +54,12 @@ export function LandingNav({ registerHref }: LandingNavProps) {
         className={cn(
           "sticky top-0 z-50 transition-all duration-500",
           scrolled
-            ? "border-b border-[var(--fh-brand)]/10 bg-[var(--fh-cream)]/95 shadow-[0_8px_30px_-20px_rgb(var(--fh-brand-rgb) /0.15)] backdrop-blur-xl"
-            : "bg-[var(--fh-cream)]/90 backdrop-blur-md",
+            ? "border-b border-[var(--qt-brand)]/10 bg-[var(--qt-cream)]/95 shadow-[0_8px_30px_-20px_rgb(var(--qt-brand-rgb) /0.15)] backdrop-blur-xl"
+            : "bg-[var(--qt-cream)]/90 backdrop-blur-md",
         )}
       >
         <div className="mx-auto flex max-w-[1180px] items-center justify-between px-4 py-5 sm:px-8 lg:py-6">
-          <FlexHubLogo href="/" size="xl" variant="on-cream" />
+          <QuoteraLogo href="/" size="xl" variant="on-cream" />
 
           <nav className="hidden items-center gap-8 lg:flex">
             {landingNav.map((item, i) => (
@@ -67,8 +67,8 @@ export function LandingNav({ registerHref }: LandingNavProps) {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flexhub-nav-link text-[16px] font-medium transition-colors duration-200 hover:text-[var(--fh-brand)]",
-                  i === 0 ? "text-[var(--fh-ink)] text-[18px]" : "text-[var(--fh-muted)]",
+                  "quotera-nav-link text-[16px] font-medium transition-colors duration-200 hover:text-[var(--qt-brand)]",
+                  i === 0 ? "text-[var(--qt-ink)] text-[18px]" : "text-[var(--qt-muted)]",
                 )}
               >
                 {item.label}
@@ -79,7 +79,7 @@ export function LandingNav({ registerHref }: LandingNavProps) {
           <div className="hidden items-center gap-6 lg:flex">
             <Link
               href="/login"
-              className="text-[16px] font-medium text-[var(--fh-muted)] transition-colors hover:text-[var(--fh-brand)]"
+              className="text-[16px] font-medium text-[var(--qt-muted)] transition-colors hover:text-[var(--qt-brand)]"
             >
               Login
             </Link>
@@ -91,7 +91,7 @@ export function LandingNav({ registerHref }: LandingNavProps) {
           <button
             type="button"
             aria-label="Toggle menu"
-            className="inline-flex size-10 items-center justify-center rounded-[10px] border border-[var(--fh-brand)]/15 text-[var(--fh-brand)] transition-colors hover:bg-[var(--fh-brand)]/5 lg:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-[10px] border border-[var(--qt-brand)]/15 text-[var(--qt-brand)] transition-colors hover:bg-[var(--qt-brand)]/5 lg:hidden"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -101,7 +101,7 @@ export function LandingNav({ registerHref }: LandingNavProps) {
 
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-[var(--fh-brand)]/30 backdrop-blur-sm transition-opacity lg:hidden",
+          "fixed inset-0 z-40 bg-[var(--qt-brand)]/30 backdrop-blur-sm transition-opacity lg:hidden",
           open ? "opacity-100" : "pointer-events-none opacity-0",
         )}
         onClick={() => setOpen(false)}
@@ -109,7 +109,7 @@ export function LandingNav({ registerHref }: LandingNavProps) {
 
       <div
         className={cn(
-          "fixed inset-x-4 top-24 z-50 rounded-[20px] border border-[var(--fh-brand)]/10 bg-[var(--fh-card)] p-5 shadow-[0_24px_60px_rgb(var(--fh-brand-rgb) /0.15)] transition-all duration-300 lg:hidden",
+          "fixed inset-x-4 top-24 z-50 rounded-[20px] border border-[var(--qt-brand)]/10 bg-[var(--qt-card)] p-5 shadow-[0_24px_60px_rgb(var(--qt-brand-rgb) /0.15)] transition-all duration-300 lg:hidden",
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0",
         )}
       >
@@ -119,17 +119,17 @@ export function LandingNav({ registerHref }: LandingNavProps) {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-[10px] px-3 py-3 text-[16px] font-medium text-[var(--fh-ink)] transition-colors hover:bg-[var(--fh-cream-light)]"
+              className="rounded-[10px] px-3 py-3 text-[16px] font-medium text-[var(--qt-ink)] transition-colors hover:bg-[var(--qt-cream-light)]"
             >
               {item.label}
             </a>
           ))}
         </nav>
-        <div className="mt-4 grid gap-2 border-t border-[var(--fh-brand)]/10 pt-4">
+        <div className="mt-4 grid gap-2 border-t border-[var(--qt-brand)]/10 pt-4">
           <Link
             href="/login"
             onClick={() => setOpen(false)}
-            className="rounded-[10px] px-3 py-3 text-center font-medium text-[var(--fh-brand)]"
+            className="rounded-[10px] px-3 py-3 text-center font-medium text-[var(--qt-brand)]"
           >
             Login
           </Link>

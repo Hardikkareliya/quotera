@@ -1,7 +1,7 @@
 import { Sparkles } from "lucide-react";
 
 import { AuthDashboardPreview } from "@/components/auth/auth-dashboard-preview";
-import { FlexHubLogo } from "@/components/brand/flexhub-logo";
+import { QuoteraLogo } from "@/components/brand/quotera-logo";
 import { APP_NAME } from "@/lib/app-brand";
 import { LAUNCH_PROMO_CODE, LAUNCH_PROMO_LABEL } from "@/lib/landing-content";
 
@@ -19,7 +19,7 @@ export function AuthBrandPanel() {
       <div className="pointer-events-none absolute -right-20 bottom-0 size-96 rounded-full bg-[#f2ebe0]/[0.05] blur-3xl" />
 
       <div className="relative flex min-h-screen w-full flex-col px-10 py-10 xl:px-14 xl:py-12">
-        <FlexHubLogo href="/" size="lg" variant="on-dark" showTagline />
+        <QuoteraLogo href="/" size="lg" variant="on-dark" showTagline />
 
         <div className="mt-8 max-w-lg">
           <span className="inline-flex items-center gap-2 rounded-full border border-[#f2ebe0]/15 bg-[#f2ebe0]/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#f2ebe0]/85">
